@@ -38,6 +38,11 @@ def get_last_messages(conversation, limit):
     except:
         short = conversation
     output = ''
+
+    # remove last message cause it wiil be in the answer or question section from UTILISATEUR
+    short = short[:-1]
+
+    # walk through message list to make it a string
     for i in short:
         output += '%s\n\n' % i['message']
     output = output.strip()
@@ -60,8 +65,8 @@ def fetch_memories(vector, logs, count):
     except:
         return ordered
 
-def ask_theo(note, recent):
-    prompt = tools.open_file('promts/prompt_response.txt').replace('<<NOTES>>', note).replace('<<CONVERSATION>>', recent)
+def ask_theo(note, recent, user_msg):
+    prompt = tools.open_file('promts/prompt_response.txt').replace('<<NOTES>>', note).replace('<<CONVERSATION>>', recent).replace('<<UTILISATEUR>>', user_msg)
     #### generate response, vectorize, save, etc
     output = gpt3_completion(prompt)
 

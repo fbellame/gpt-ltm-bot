@@ -1,4 +1,4 @@
-Ã‰crire les notes dÃ©taillÃ©es de la liste Ã  tiret au format "- "
+Écrire les notes détaillées de la liste à tiret au format "- "
 
 
 

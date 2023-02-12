@@ -4,19 +4,19 @@ import numpy as np
 from numpy.linalg import norm
 
 def open_file(filepath):
-    with open(filepath, 'r', encoding='utf-8') as infile:
+    with open(filepath, 'r', encoding='latin1') as infile:
         return infile.read()
 
 def save_file(filepath, content):
-    with open(filepath, 'w', encoding='utf-8') as outfile:
+    with open(filepath, 'w', encoding='latin1') as outfile:
         outfile.write(content)    
 
 def load_json(filepath):
-    with open(filepath, 'r', encoding='utf-8') as infile:
+    with open(filepath, 'r', encoding='latin1') as infile:
         return json.load(infile)    
     
 def save_json(filepath, payload):
-    with open(filepath, 'w', encoding='utf-8') as outfile:
+    with open(filepath, 'w', encoding='latin1') as outfile:
         json.dump(payload, outfile, ensure_ascii=False, sort_keys=True, indent=2)
 
 def timestamp_to_datetime(unix_time):
