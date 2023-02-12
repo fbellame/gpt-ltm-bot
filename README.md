@@ -1,6 +1,8 @@
-# LongtermChatExternalSources
+# GPT LTM chatbot
 
-GPT-3 chatbot with long-term memory and external sources.
+Version francaise d'un bot basé sur GPT-3 d'OPEN AI avec une gestion de la mémoire à long terme et une recherche sémentique dans cette mémoire via la technique du "embedding".
+
+![diagramme de contexte](theo-got3-bot.drawio.png)
 
 ## Prerequisites
 
@@ -9,15 +11,6 @@ GPT-3 chatbot with long-term memory and external sources.
 
 ## Setup
 
-### Windows
-
-1.  Clone the repository to your local PC: `git clone https://github.com/daveshap/LongtermChatExternalSources.git`
-2.  Create a virtual environment: `python3 -m venv env`
-3.  Activate the environment: `.\env\Scripts\activate`
-4.  Install the required packages: `pip install openai numpy`
-5.  Copy your OpenAI api key to a file named `openaiapikey.txt` in the project directory. Ensure there is no trailing newline.
-
-### Mac/Linux
 
 1.  Clone the repository to your local PC: `git clone https://github.com/daveshap/LongtermChatExternalSources.git`
 2.  Create a virtual environment: `python3 -m venv env`

@@ -1,0 +1,7 @@
+Écrire les notes détaillées de la liste à tiret au format "- "
+
+
+<<INPUT>>
+
+
+NOTES:

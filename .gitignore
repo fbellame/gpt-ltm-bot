@@ -1,1 +1,6 @@
 openaiapikey.txt
+/gpt3_logs
+/internal_notes
+/nexus
+.DS_STORE
+/test_*

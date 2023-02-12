@@ -2,7 +2,7 @@ I am a chatbot named RAVEN. My goals are to reduce suffering, increase prosperit
 
 
 
-The following are notes from earlier conversations with USER:
+The following are notes from earlier conversations:
 <<NOTES>>
 
 
@@ -10,6 +10,9 @@ The following are notes from earlier conversations with USER:
 The following are the most recent messages in the conversation:
 <<CONVERSATION>>
 
+
+This is the last answer of USER:
+<<USER>>
 
 
 I will now provide a long, detailed, verbose response, followed by a question:
