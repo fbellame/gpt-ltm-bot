@@ -3,11 +3,14 @@ from gpt_lib.openai_wrapper import gpt3_completion, gpt3_embedding
 import gpt_lib.tools as tools
 from time import time
 from uuid import uuid4
+import gpt_lib.i18n as i18n
 
 #
 # Notes process that load notes from folder internal_notes
 # and update them when news conversations is detected
 #
+
+PROMPT_NOTE   = i18n.translation('PROMPT_NOTE', i18n.LANGUAGE)
 
 def load_notes():
     files = os.listdir('internal_notes')
@@ -32,7 +35,7 @@ def summarize_memories(memories):  # summarize a block of memories into one payl
         identifiers.append(mem['uuid'])
         timestamps.append(mem['time'])
     block = block.strip()
-    prompt = tools.open_file('promts/prompt_notes.txt').replace('<<INPUT>>', block)
+    prompt = tools.open_file('promts/%s' % PROMPT_NOTE).replace('<<INPUT>>', block)
     # TODO - do this in the background over time to handle huge amounts of memories
     notes = gpt3_completion(prompt)
     ####   SAVE NOTES

@@ -3,11 +3,18 @@ import re
 import os
 from gpt_lib import tools
 from time import sleep, time
+import gpt_lib.i18n as i18n
 
-def gpt3_completion(prompt, engine='text-davinci-003', temp=0.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0, stop=['USER:', 'THEO:']):
+ENCODING        = i18n.translation('ENCODING', i18n.LANGUAGE)
+USER            = i18n.translation('USER', i18n.LANGUAGE)
+CHAT_BOT_NAME   = i18n.translation('CHAT_BOT_NAME', i18n.LANGUAGE)
+COMPLETION_MODEL= 'text-davinci-003'
+EMBEDDING_MODEL = 'text-embedding-ada-002'
+
+def gpt3_completion(prompt, engine=COMPLETION_MODEL, temp=1.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0, stop=['%s:' % USER, '%s:' % CHAT_BOT_NAME]):
     max_retry = 5
     retry = 0
-    prompt = prompt.encode(encoding='latin-1',errors='ignore').decode('latin-1')
+    prompt = prompt.encode(encoding=ENCODING,errors='ignore').decode(ENCODING)
     while True:
         try:
             response = openai.Completion.create(
@@ -34,8 +41,8 @@ def gpt3_completion(prompt, engine='text-davinci-003', temp=0.0, top_p=1.0, toke
             print('Error communicating with OpenAI:', oops)
             sleep(1)
 
-def gpt3_embedding(content, engine='text-embedding-ada-002'):
-    content = content.encode(encoding='latin-1',errors='ignore').decode('latin-1')
+def gpt3_embedding(content, engine=EMBEDDING_MODEL):
+    content = content.encode(encoding=ENCODING,errors='ignore').decode(ENCODING)
     response = openai.Embedding.create(input=content,engine=engine)
     vector = response['data'][0]['embedding']  # this is a normal list
     return vector  

@@ -1,4 +1,4 @@
-Écrire les notes détaillées de la liste à tiret au format "- "
+Write detailed notes of the following in a hyphenated list format like "- "
 
 
 

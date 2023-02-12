@@ -3,11 +3,15 @@ import gpt_lib.tools as tools
 from gpt_lib.openai_wrapper import gpt3_embedding, gpt3_completion
 from time import time
 from uuid import uuid4
+import gpt_lib.i18n as i18n
 
 #
 # Nexus methods for conversation
 # 
 #
+
+PROMPT_RESPONSE = i18n.translation('PROMPT_RESPONSE', i18n.LANGUAGE)
+USER            = i18n.translation('USER', i18n.LANGUAGE)
 
 def load_convo():
     files = os.listdir('nexus')
@@ -66,7 +70,7 @@ def fetch_memories(vector, logs, count):
         return ordered
 
 def ask_theo(note, recent, user_msg):
-    prompt = tools.open_file('promts/prompt_response.txt').replace('<<NOTES>>', note).replace('<<CONVERSATION>>', recent).replace('<<UTILISATEUR>>', user_msg)
+    prompt = tools.open_file('promts/%s' % PROMPT_RESPONSE).replace('<<NOTES>>', note).replace('<<CONVERSATION>>', recent).replace('<<%s>>' % USER, user_msg)
     #### generate response, vectorize, save, etc
     output = gpt3_completion(prompt)
 
