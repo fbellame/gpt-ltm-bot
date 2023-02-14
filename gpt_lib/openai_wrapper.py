@@ -4,14 +4,20 @@ import os
 from gpt_lib import tools
 from time import sleep, time
 import gpt_lib.i18n as i18n
+from gpt_lib.config import Config
+
+c = Config()
 
 ENCODING        = i18n.translation('ENCODING', i18n.LANGUAGE)
 USER            = i18n.translation('USER', i18n.LANGUAGE)
 CHAT_BOT_NAME   = i18n.translation('CHAT_BOT_NAME', i18n.LANGUAGE)
-COMPLETION_MODEL= 'text-davinci-003'
-EMBEDDING_MODEL = 'text-embedding-ada-002'
 
-def gpt3_completion(prompt, engine=COMPLETION_MODEL, temp=1.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0, stop=['%s:' % USER, '%s:' % CHAT_BOT_NAME]):
+COMPLETION_MODEL= c.config['MODEL']['completion_model']
+EMBEDDING_MODEL = c.config['MODEL']['embedding_model']
+TEMPERATURE_MODEL = float(c.config['MODEL']['model_temperature'])
+MAX_TOKEN       = int(c.config['MODEL']['max_tokens'])
+
+def gpt3_completion(prompt, engine=COMPLETION_MODEL, temp=TEMPERATURE_MODEL, top_p=1.0, tokens=MAX_TOKEN, freq_pen=0.0, pres_pen=0.0, stop=['%s:' % USER, '%s:' % CHAT_BOT_NAME]):
     max_retry = 5
     retry = 0
     prompt = prompt.encode(encoding=ENCODING,errors='ignore').decode(ENCODING)

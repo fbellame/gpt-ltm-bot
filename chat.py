@@ -1,12 +1,15 @@
 import gpt_lib.notes as notes
 import gpt_lib.nexus as nexus
 import gpt_lib.i18n as i18n
+from gpt_lib.config import Config
+
+c = Config()
 
 CHAT_BOT_NAME   = i18n.translation('CHAT_BOT_NAME', i18n.LANGUAGE)
 USER            = i18n.translation('USER', i18n.LANGUAGE)
 
-NBR_CONV_MSG    = 4
-NBR_MEMORIES    = 10
+NBR_CONV_MSG    = int(c.config['GLOBAL']['nbr_conv_msg'])
+NBR_MEMORIES    = int(c.config['GLOBAL']['nbr_memories'])
 
 #
 # Main chat bot loop for conversation
